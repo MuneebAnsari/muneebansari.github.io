@@ -27,7 +27,7 @@ twitter_username:
 github_username:  MuneebAnsari
 
 # Build settings
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
 

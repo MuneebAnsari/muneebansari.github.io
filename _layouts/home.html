@@ -1,0 +1,95 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+  
+
+  <div class="header-desc">
+    <!-- style="color: #F49432;" -->
+    <div class="header-desc-details">
+        <p><b>Software Developer</b> @
+            <span class="work">
+                <a style="color:#0060b6" href="https://407etr.com/en/highway/corporate/background-information.html" 
+                    target="_blank" title="Learn More">407ETR</a>
+            </span>
+            
+        </p>
+        <!-- <p>HBSc Computer Science @ <span class="lg-view">University Of Toronto</span><span class="sm-view">UofT</span></p> -->
+        <p><b>HBSc Computer Science</b> @ University Of Toronto</p>
+        <!-- <p>Please feel free to take a look at my resume and contact me for opportunities</p> -->
+    </div>
+  </div>
+
+  <div class="projects-title"> <span class="title icon icon--github">{% include icon-github.svg %}</span></div>
+
+  <div class="projects">
+    <div class="project-1">
+      <div class="project">
+          <img class="project-img" src="assets/images/rs.JPG">
+          <div class="project-info">
+                  <h5 class="project-name">RuneScape-Woodcutting-Bot</h5>
+                  <h5 class="project-desc">Automate woodcutting in Runescape using Python, OpenCv and computer vision.</h5>
+          </div>
+          <form action="https://github.com/MuneebAnsari/RuneScape-Woodcutting-Bot" method="get" target="_blank">
+              <button class="btn-project">Read More</button>
+          </form>
+          
+      </div>
+    </div>
+    <div class="project-2">
+      <div class="project">
+          <img class="project-img" src="assets/images/nds.jpg">
+          <div class="project-info">
+              <h5 class="project-name">Nintendo3DS-Twitter-Client</h5>
+              <h5 class="project-desc">A Nintendo 3DS twitter client built
+                  using C++, devkitPro and devkitARM toolchain.</h5>
+          </div>
+          <form style="display: inline" action="https://github.com/MuneebAnsari/Nintendo3DS-Twitter-Client" method="get" target="_blank">
+              <button class="btn-project">Read More</button>
+          </form>
+      </div>
+    </div>
+    <div class="project-3">
+      <div class="project">
+          <img class="project-img" src="assets/images/ex1.jpg">
+          <div class="project-info">
+              <h5 class="project-name">seam-carve</h5>
+              <h5 class="project-desc">Implementation of "Seam Carving for Content-Aware Image Resizing" paper using Python.</h5>
+          </div>
+          <form style="display: inline" action="https://github.com/MuneebAnsari/seam-carve" method="get" target="_blank">
+              <button class="btn-project">Read More</button>
+          </form>
+      </div>
+    </div>    
+  </div>
+
+  {{ content }}
+
+  <!-- {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <ul class="post-list">
+      
+      {%- for post in site.posts -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  {%- endif -%} -->
+
+</div>
