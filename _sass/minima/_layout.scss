@@ -317,6 +317,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(214px, 1fr));
   grid-gap: 1rem;
+
+  @include media-query($on-palm) {
+    grid-template-rows: repeat(3, 1fr);
+
+  }
 } 
 
 .project-img {
