@@ -10,28 +10,28 @@ dl, dd, ol, ul, figure {
 
 .main-wrapper {
 
-  @media screen and (min-width: 1422px) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  // @media screen and (min-width: 1422px) {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(114px, 1fr));
-      grid-gap: 1rem;
-    } 
-  }
+  //   .projects {
+  //     display: grid;
+  //     grid-template-columns: repeat(auto-fit, minmax(114px, 1fr));
+  //     grid-gap: 1rem;
+  //   } 
+  // }
 
 
-  @media screen and (min-width:801px) and (max-width: 1421px) {
+  // @media screen and (min-width:801px) and (max-width: 1421px) {
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(242px, 1fr));
-      grid-gap: 1rem;
-    } 
-  }
+  //   .projects {
+  //     display: grid;
+  //     grid-template-columns: repeat(auto-fit, minmax(242px, 1fr));
+  //     grid-gap: 1rem;
+  //   } 
+  // }
   
   
 }
