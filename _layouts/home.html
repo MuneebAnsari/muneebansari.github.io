@@ -4,67 +4,105 @@ layout: default
 
 <div class="home">
   {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
+  <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
-  
 
   <div class="header-desc">
     <!-- style="color: #F49432;" -->
     <div class="header-desc-details">
-        <p><b>Software Developer</b> @
-                <a style="color:#0060b6" href="https://407etr.com/en/highway/corporate/background-information.html" 
-                    target="_blank" title="Read More">407ETR</a>
-        </p>
-        <p><b>HBSc Computer Science</b> @ University Of Toronto</p>
+      <p>
+        <b>Software Developer</b> @
+        <a
+          style="color: #0060b6"
+          href="https://407etr.com/en/highway/corporate/background-information.html"
+          target="_blank"
+          title="Read More"
+          >407ETR</a
+        >
+      </p>
+      <p><b>HBSc Computer Science</b> @ University Of Toronto</p>
     </div>
   </div>
 
-  <div class="projects-title"> <span class="title icon">{% include code-solid.svg %}</span></div>
+  <div class="projects-title">
+    <span class="title icon">{% include code-solid.svg %}</span>
+  </div>
 
   <div class="projects">
     <div class="project-1">
       <div class="project">
-        <img class="project-img" src="assets/images/407mobile.jpg">
+        <img class="project-img" src="assets/images/407mobile.jpg" />
         <div class="project-info">
-                <h5 class="project-name">407 ETR</h5>
-                <h5 class="project-desc">407 ETR mobile app available for download in 
-                  <a style="color:#0060b6" href="https://apps.apple.com/ca/app/407-etr/id1389837029" 
-                    target="_blank" title="407 ETR">App Store</a> and 
-                    <a style="color:#0060b6" href="https://play.google.com/store/apps/details?id=com.mobile.a407.selfserviceandroid&hl=en_CA" 
-                    target="_blank" title="407 ETR">Google Play</a>.</h5>
+          <h5 class="project-name">407 ETR</h5>
+          <h5 class="project-desc">
+            407 ETR mobile app available for download in
+            <a
+              style="color: #0060b6"
+              href="https://apps.apple.com/ca/app/407-etr/id1389837029"
+              target="_blank"
+              title="407 ETR"
+              >App Store</a
+            >
+            and
+            <a
+              style="color: #0060b6"
+              href="https://play.google.com/store/apps/details?id=com.mobile.a407.selfserviceandroid&hl=en_CA"
+              target="_blank"
+              title="407 ETR"
+              >Google Play</a
+            >.
+          </h5>
         </div>
-        <form style="display: inline" action="https://www.407etr.com/en/mobile-app.html" method="get" target="_blank">
-            <button class="btn-project">Read More</button>
+        <form
+          style="display: inline"
+          action="https://www.407etr.com/en/mobile-app.html"
+          method="get"
+          target="_blank"
+        >
+          <button class="btn-project">Read More</button>
         </form>
-    </div>
+      </div>
     </div>
     <div class="project-2">
       <div class="project">
-          <img class="project-img" src="assets/images/ex1.jpg">
-          <div class="project-info">
-              <h5 class="project-name">seam-carve</h5>
-              <h5 class="project-desc">Implementation of "Seam Carving for Content-Aware Image Resizing" paper using Python.</h5>
-          </div>
-          <form style="display: inline" action="https://github.com/MuneebAnsari/seam-carve" method="get" target="_blank">
-            <button class="btn-project">Read More</button>
-          </form>
+        <img class="project-img" src="assets/images/ex1.jpg" />
+        <div class="project-info">
+          <h5 class="project-name">seam-carve</h5>
+          <h5 class="project-desc">
+            Implementation of "Seam Carving for Content-Aware Image Resizing"
+            paper using Python.
+          </h5>
+        </div>
+        <form
+          style="display: inline"
+          action="https://github.com/MuneebAnsari/seam-carve"
+          method="get"
+          target="_blank"
+        >
+          <button class="btn-project">Read More</button>
+        </form>
       </div>
     </div>
     <div class="project-3">
       <div class="project">
-        <img class="project-img" src="assets/images/sd.JPG">
+        <img class="project-img" src="assets/images/sd.JPG" />
         <div class="project-info">
-            <h5 class="project-name">Social-Distancing</h5>
-            <h5 class="project-desc">Validate social
-              distancing protocols and face mask usage during the COVID-19 pandemic.</h5>
+          <h5 class="project-name">Social-Distancing</h5>
+          <h5 class="project-desc">
+            Validate social distancing protocols and face mask usage during the
+            COVID-19 pandemic.
+          </h5>
         </div>
-        <form style="display: inline" action="https://github.com/MuneebAnsari/Social-Distancing/blob/master/Social_Distancing_Report.pdf" method="get" target="_blank">
-            <button class="btn-project">Read More</button>
+        <form
+          style="display: inline"
+          action="https://github.com/MuneebAnsari/Social-Distancing/blob/master/facemask_detect_low_res.ipynb"
+          method="get"
+          target="_blank"
+        >
+          <button class="btn-project">Read More</button>
         </form>
-          
       </div>
-
-    </div>    
+    </div>
   </div>
 
   {{ content }}
@@ -91,5 +129,4 @@ layout: default
 
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%} -->
-
 </div>
