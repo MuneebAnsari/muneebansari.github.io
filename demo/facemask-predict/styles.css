@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #252525;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+.layout {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  margin-bottom: 20px;
+}
+
+.col1 {
+  flex: 1;
+  min-width: 280px;
+  margin-right: 20px;
+}
+
+.col2 {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-options {
+  margin-bottom: 20px;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-label,
+.url-upload-label {
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.upload-label h2 {
+  font-size: clamp(14px, 2vw, 24px);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.url-upload-label h2 {
+  font-size: clamp(14px, 2vw, 24px);
+  margin: 0;
+  white-space: nowrap;
+}
+
+#image-system-upload,
+#image-url-upload {
+  display: inline-block;
+}
+
+.url-input {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.layer-label {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.image-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 260px;
+  width: 260px;
+  max-height: 360px;
+  margin: 20px 0;
+  position: relative;
+}
+
+#uploaded-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.action-buttons {
+  display: flex;
+  margin: 20px 0;
+}
+
+#predict-button {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+#display-button,
+#clear-button {
+  font-weight: bold;
+}
+
+button {
+  display: block;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#predict-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#fmap-container {
+  max-width: 100%;
+  height: auto;
+}
+
+canvas {
+  padding: 6px;
+}
+
+.fmap:hover {
+  transform: scale(2);
+}
+
+#prediction-result {
+  margin-bottom: 20px;
+}

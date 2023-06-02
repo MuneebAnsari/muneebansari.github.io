@@ -1,0 +1,65 @@
+---
+permalink: /demo/facemask-predict
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FaceMask Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <div class="header">
+        <h1>FaceMask Prediction</h1>
+      </div>
+
+      <div class="container">
+        <div class="col1">
+          <div class="col1-container">
+            <div class="upload-options">
+              <div class="upload">
+                <label for="image-system-upload" class="upload-label"
+                  ><h2>Upload Image</h2></label
+                ><br />
+                <input
+                  type="file"
+                  id="image-system-upload"
+                  accept="image/jpeg, image/jpg, image/png"
+                />
+              </div>
+              <div class="upload">
+                <label for="image-url-upload" class="url-upload-label"
+                  ><h2>Enter Image URL</h2></label
+                >
+                <div class="url-input">
+                  <input type="text" id="image-url-upload" />
+                </div>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button id="display-button">Display</button>
+              <button id="clear-button">Reset</button>
+            </div>
+
+            <div class="image-preview">
+              <img id="uploaded-image" style="display: none" />
+              <button id="predict-button" style="display: none">Predict</button>
+            </div>
+
+            <div id="prediction-result" style="display: none">
+              <h2 id="result-text"></h2>
+            </div>
+          </div>
+        </div>
+        <div class="col2">
+          <div id="fmap-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
