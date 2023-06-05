@@ -81,10 +81,13 @@ async function getPrediction() {
       const imgFile = imageUpload.files[0];
       formData.append("file", imgFile);
     }
-    const response = await fetch("http://localhost:5000/api/v1/predict", {
-      method: "POST",
-      body: formData,
-    });
+    const response = await fetch(
+      "https://mansaridev.pythonanywhere.com/api/v1/predict",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const data = await response.json();
     return data;
   } catch (e) {
