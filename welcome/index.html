@@ -1,2 +1,19 @@
+To redirect an HTML webpage to an Android app using a custom URI scheme, you can
+utilize JavaScript to perform the redirection. Below is a basic example of how
+you can achieve this: html Copy code
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>welcome</title>
+  </head>
+  <body>
+    <h1>Redirecting...</h1>
+
+    <script>
+      const customScheme = "com.etr407.ciam.androidharness://";
+      window.location.href = customScheme;
+    </script>
+  </body>
+</html>
