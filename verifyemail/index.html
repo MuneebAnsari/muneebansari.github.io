@@ -49,6 +49,18 @@
         max-width: 25%;
         height: auto;
       }
+      .button-link {
+        background: none;
+        border: none;
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        padding: 0;
+        font: inherit;
+      }
+      .button-link:focus {
+        outline: none;
+      }
     </style>
   </head>
   <body>
@@ -71,12 +83,25 @@
       <!-- <a href="#" class="resend-link">Resend</a> -->
       <p>
         Wrong email?
-        <a
-          href="https://login.mansar.io/v2/logout?auth0Client=eyJuYW1lIjoiQXV0aDAuQW5kcm9pZCIsImVudiI6eyJhbmRyb2lkIjoiMzQifSwidmVyc2lvbiI6IjIuMTAuMiJ9&returnTo=com.etr407.ciam.androidharness%3A%2F%2Flogin.mansar.io%2Fandroid%2Fcom.etr407.ciam.androidharness%2Fcallback&client_id=pLK2iHJcGgqsVi01iY1lMUHrYD3jHTse"
+        <button class="button-link" onclick="logout()">Sign Out</button>
+        <!-- <a
+          href=""
           class="link"
           >Sign Out</a
-        >
+        > -->
       </p>
     </div>
   </body>
+  <script>
+    function logout() {
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src =
+        "https://login.mansar.io/v2/logout?auth0Client=eyJuYW1lIjoiQXV0aDAuQW5kcm9pZCIsImVudiI6eyJhbmRyb2lkIjoiMzQifSwidmVyc2lvbiI6IjIuMTAuMiJ9&returnTo=com.etr407.ciam.androidharness%3A%2F%2Flogin.mansar.io%2Fandroid%2Fcom.etr407.ciam.androidharness%2Fcallback&client_id=pLK2iHJcGgqsVi01iY1lMUHrYD3jHTse";
+      document.body.appendChild(iframe);
+
+      window.location.href =
+        "com.etr407.ciam.androidharness://login.mansar.io/logout";
+    }
+  </script>
 </html>
