@@ -113,14 +113,14 @@
   </script> -->
   <script>
     function logout() {
-      var iframe = document.createElement("iframe");
+      let iframe = document.createElement("iframe");
       iframe.style.display = "none";
       iframe.src =
         "https://login.mansar.io/v2/logout?auth0Client=eyJuYW1lIjoiQXV0aDAuQW5kcm9pZCIsImVudiI6eyJhbmRyb2lkIjoiMzQifSwidmVyc2lvbiI6IjIuMTAuMiJ9";
       document.body.appendChild(iframe);
-      alert("redirecting");
+      alert("redirecting...");
       window.location.href =
-        "com.etr407.ciam.androidharness://login.mansar.io/custom";
+        "com.etr407.ciam.androidharness://login.mansar.io/custom/logout";
     }
   </script>
 </html>
