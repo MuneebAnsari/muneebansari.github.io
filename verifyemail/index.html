@@ -104,7 +104,12 @@
     }
 
     function goToContinueUri() {
-      return `https://login.mansar.io/continue?state=${getState()}`;
+      const continueUri = `https://login.mansar.io/continue?state=${getState()}`;
+      let iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = continueUri;
+      document.body.appendChild(iframe);
+      alert(continueUri);
     }
   </script>
 </html>
