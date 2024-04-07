@@ -78,7 +78,7 @@
 
       <p>
         Didn't get an email?
-        <a href="#" class="link">Resend</a>
+        <a class="link" onclick="goToContinueUri()">Resend</a>
       </p>
       <!-- <a href="#" class="resend-link">Resend</a> -->
       <p>
@@ -96,6 +96,15 @@
     function logout() {
       window.location.href =
         "com.etr407.ciam.androidharness://login.mansar.io/custom/logout";
+    }
+
+    function getState() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("state");
+    }
+
+    function goToContinueUri() {
+      return `https://login.mansar.io/continue?state=${getState()}`;
     }
   </script>
 </html>
