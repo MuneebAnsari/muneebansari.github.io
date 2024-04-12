@@ -64,11 +64,11 @@
         the verification link to complete the process.
       </p>
 
-      <button onclick="callback()">Continue</button>
+      <button onclick="goToContinueUri()">Continue</button>
 
       <p>
         Didn't get an email?
-        <a class="link" onclick="callback()">Resend</a>
+        <a class="link" onclick="goToContinueUri()">Resend</a>
       </p>
       <p>
         Wrong email?
@@ -77,6 +77,26 @@
     </div>
   </body>
   <script>
+    function getState() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("state");
+    }
+    function getSessionToken() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("session_token");
+    }
+
+    function goToContinueUri() {
+      const receivedToken = getSessionToken();
+      const updatedSessionToken = updatedToken(receivedToken);
+
+      const continueUri = `https://login.mansar.io/continue?state=${getState()}&session_token=${updatedSessionToken}`;
+      let iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = continueUri;
+      document.body.appendChild(iframe);
+    }
+
     function logoutCallback() {
       window.location.href =
         "com.etr407.ciam.androidharness://login.mansar.io/custom/logout";
@@ -85,6 +105,35 @@
     function callback() {
       window.location.href =
         "com.etr407.ciam.androidharness://login.mansar.io/custom";
+    }
+
+    function updatedToken(receivedToken) {
+      console.log("receivedToken", receivedToken);
+      function decodeJwt(token) {
+        const payload = token.split(".")[1];
+        return JSON.parse(atob(payload));
+      }
+
+      function signJwt(payload, secret) {
+        const header = { alg: "HS256", typ: "JWT" };
+        const headerEncoded = btoa(JSON.stringify(header));
+        console.log(headerEncoded);
+        const payloadEncoded = btoa(JSON.stringify(payload));
+        console.log(payloadEncoded);
+        // const signature = btoa(headerEncoded + "." + payloadEncoded);
+        return headerEncoded + "." + payloadEncoded + "." + secret;
+      }
+
+      let decodedPayload = decodeJwt(receivedToken);
+      console.log(decodedPayload);
+      decodedPayload = { status: "abc", ...decodedPayload };
+      console.log(decodedPayload);
+      const secret =
+        "acec655005ad1288027db5d9cf1d232795b11894d8750aaa11e5b11102fa38f9";
+      const updatedToken = signJwt(decodedPayload, secret);
+
+      console.log("Updated Tokenn:", updatedToken);
+      return updatedToken;
     }
   </script>
 </html>
