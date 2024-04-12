@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const express = require("express");
 const app = express();
 
-app.get("/token", (req, res) => {
+app.get("/validate", (req, res) => {
   const token = req.query.token;
   const secret =
     "acec655005ad1288027db5d9cf1d232795b11894d8750aaa11e5b11102fa38f9";
