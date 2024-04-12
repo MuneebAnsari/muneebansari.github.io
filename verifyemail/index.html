@@ -120,7 +120,7 @@
         const payloadEncoded = btoa(JSON.stringify(payload)).replace(/=/g, "");
         console.log(payloadEncoded);
         // const signature = btoa(headerEncoded + "." + payloadEncoded);
-        return headerEncoded + "." + payloadEncoded + "." + btoa(secret);
+        return headerEncoded + "." + payloadEncoded + "." + secret;
       }
 
       let decodedPayload = decodeJwt(receivedToken);
