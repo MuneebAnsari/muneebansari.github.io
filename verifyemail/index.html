@@ -135,7 +135,11 @@
 
       let decodedPayload = decodeJwt(receivedToken);
       console.log("decodedPayload", decodedPayload);
-      const updatedPayload = { status: "abc", ...decodedPayload };
+      const updatedPayload = {
+        ...decodedPayload,
+        status: "abc",
+        state: getState(),
+      };
 
       const updatedPayloadString = JSON.stringify(updatedPayload);
 
@@ -159,7 +163,7 @@
       const signatureBase64url = base64urlEncode(
         String.fromCharCode.apply(null, new Uint8Array(signature))
       );
-      const jwt = `${headerBase64url}.${payloadBase64url}.${signatureBase64url}`;
+      const jwt = `${headerBase64url}.${payloadBase64url}.${signature}`;
       console.log("Result", jwt);
       return jwt;
     }
