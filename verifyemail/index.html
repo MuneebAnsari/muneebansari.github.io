@@ -139,6 +139,7 @@
         ...decodedPayload,
         status: "abc",
         state: getState(),
+        aud: "https://mansar-custom2.cantoll.auth0app.com",
       };
 
       const updatedPayloadString = JSON.stringify(updatedPayload);
@@ -163,7 +164,7 @@
       const signatureBase64url = base64urlEncode(
         String.fromCharCode.apply(null, new Uint8Array(signature))
       );
-      const jwt = `${headerBase64url}.${payloadBase64url}.${signature}`;
+      const jwt = `${headerBase64url}.${payloadBase64url}.${signatureBase64url}`;
       console.log("Result", jwt);
       return jwt;
     }
