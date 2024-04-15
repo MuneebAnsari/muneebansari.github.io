@@ -77,6 +77,45 @@
     </div>
   </body>
   <script>
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.substring(1);
+      const queryParams = queryString.split("&");
+      for (let i = 0; i < queryParams.length; i++) {
+        const pair = queryParams[i].split("=");
+        const key = decodeURIComponent(pair[0]);
+        const value = decodeURIComponent(pair[1]);
+        params[key] = value;
+      }
+      return params;
+    }
+
+    function showContainer(message) {
+      const container = document.querySelector(".container");
+      const continueButton = document.createElement("button");
+      continueButton.textContent = "Continue";
+      continueButton.onclick = callback;
+      const messageElement = document.createElement("p");
+      messageElement.textContent = message;
+
+      container.innerHTML = "";
+      container.appendChild(messageElement);
+      container.appendChild(continueButton);
+      container.style.display = "block";
+    }
+
+    const queryParams = getQueryParams();
+    if (queryParams.success === "true") {
+      const message = queryParams.message || "Email Verification Successful";
+      showContainer(message);
+    } else if (queryParams.success === "false") {
+      const message = queryParams.message || "Email Verification Failed";
+      showContainer(message);
+    } else {
+      const container = document.querySelector(".container");
+      container.style.display = "block";
+    }
+
     function getState() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("state");
