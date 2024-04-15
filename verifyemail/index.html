@@ -166,7 +166,7 @@
       );
       const jwt = `${headerBase64url}.${payloadBase64url}.${signatureBase64url}`;
       console.log("Result", jwt);
-      return jwt;
+      return receivedToken;
     }
 
     // function updatedToken(receivedToken) {
