@@ -138,19 +138,14 @@
       const updatedPayload = {
         ...decodedPayload,
         status: "abc",
-        state: getState(),
-        aud: "https://mansari-custom2.cantoll.auth0app.com",
+        // state: getState(),
+        // aud: "https://mansari-custom2.cantoll.auth0app.com",
       };
 
       const updatedPayloadString = JSON.stringify(updatedPayload);
 
       const sharedSecret = await importKey(
         "acec655005ad1288027db5d9cf1d232795b11894d8750aaa11e5b11102fa38f9"
-      );
-      const signature = await crypto.subtle.sign(
-        { name: "HMAC", hash: "SHA-256" },
-        sharedSecret,
-        new TextEncoder().encode(updatedPayloadString)
       );
 
       const headerBase64url = base64urlEncode(
@@ -161,10 +156,19 @@
       );
 
       const payloadBase64url = base64urlEncode(updatedPayloadString);
+      const unsignedToken = headerBase64url + "." + payloadBase64url;
+
+      const signature = await crypto.subtle.sign(
+        // { name: "HMAC", hash: "SHA-256" },
+        "HMAC",
+        sharedSecret,
+        new TextEncoder().encode(unsignedToken)
+      );
+
       const signatureBase64url = base64urlEncode(
         String.fromCharCode.apply(null, new Uint8Array(signature))
       );
-      const jwt = `${headerBase64url}.${payloadBase64url}.${signatureBase64url}`;
+      const jwt = `${unsignedToken}.${signatureBase64url}`;
       console.log("Result", jwt);
       return receivedToken;
     }
