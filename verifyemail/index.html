@@ -64,7 +64,7 @@
         the verification link to complete the process.
       </p>
 
-      <button onclick="callback()">Continue</button>
+      <!-- <button onclick="callback()">Continue</button> -->
 
       <p>
         Didn't get an email?
@@ -146,71 +146,71 @@
         "com.etr407.ciam.androidharness://login.mansar.io/custom";
     }
 
-    async function importKey(data) {
-      var key = await crypto.subtle.importKey(
-        "raw",
-        new TextEncoder().encode(data),
-        {
-          name: "HMAC",
-          hash: { name: "SHA-512" },
-        },
-        false,
-        ["sign", "verify"]
-      );
-      return key;
-    }
+    // async function importKey(data) {
+    //   var key = await crypto.subtle.importKey(
+    //     "raw",
+    //     new TextEncoder().encode(data),
+    //     {
+    //       name: "HMAC",
+    //       hash: { name: "SHA-512" },
+    //     },
+    //     false,
+    //     ["sign", "verify"]
+    //   );
+    //   return key;
+    // }
 
-    function decodeJwt(token) {
-      const payload = token.split(".")[1];
-      return JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
-    }
-    async function updatedToken(receivedToken) {
-      function base64urlEncode(str) {
-        return btoa(str)
-          .replace(/\+/g, "-")
-          .replace(/\//g, "_")
-          .replace(/=/g, "");
-      }
+    // function decodeJwt(token) {
+    //   const payload = token.split(".")[1];
+    //   return JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
+    // }
+    // async function updatedToken(receivedToken) {
+    //   function base64urlEncode(str) {
+    //     return btoa(str)
+    //       .replace(/\+/g, "-")
+    //       .replace(/\//g, "_")
+    //       .replace(/=/g, "");
+    //   }
 
-      let decodedPayload = decodeJwt(receivedToken);
-      console.log("decodedPayload", decodedPayload);
-      const updatedPayload = {
-        ...decodedPayload,
-        status: "abc",
-        // state: getState(),
-        // aud: "https://mansari-custom2.cantoll.auth0app.com",
-      };
+    //   let decodedPayload = decodeJwt(receivedToken);
+    //   console.log("decodedPayload", decodedPayload);
+    //   const updatedPayload = {
+    //     ...decodedPayload,
+    //     status: "abc",
+    //     // state: getState(),
+    //     // aud: "https://mansari-custom2.cantoll.auth0app.com",
+    //   };
 
-      const updatedPayloadString = JSON.stringify(updatedPayload);
+    //   const updatedPayloadString = JSON.stringify(updatedPayload);
 
-      const sharedSecret = await importKey(
-        "acec655005ad1288027db5d9cf1d232795b11894d8750aaa11e5b11102fa38f9"
-      );
+    //   const sharedSecret = await importKey(
+    //     "acec655005ad1288027db5d9cf1d232795b11894d8750aaa11e5b11102fa38f9"
+    //   );
 
-      const headerBase64url = base64urlEncode(
-        JSON.stringify({
-          alg: "HS256",
-          typ: "JWT",
-        })
-      );
+    //   const headerBase64url = base64urlEncode(
+    //     JSON.stringify({
+    //       alg: "HS256",
+    //       typ: "JWT",
+    //     })
+    //   );
 
-      const payloadBase64url = base64urlEncode(updatedPayloadString);
-      const unsignedToken = headerBase64url + "." + payloadBase64url;
+    //   const payloadBase64url = base64urlEncode(updatedPayloadString);
+    //   const unsignedToken = headerBase64url + "." + payloadBase64url;
 
-      const signature = await crypto.subtle.sign(
-        // { name: "HMAC", hash: "SHA-256" },
-        "HMAC",
-        sharedSecret,
-        new TextEncoder().encode(unsignedToken)
-      );
+    //   const signature = await crypto.subtle.sign(
+    //     // { name: "HMAC", hash: "SHA-256" },
+    //     "HMAC",
+    //     sharedSecret,
+    //     new TextEncoder().encode(unsignedToken)
+    //   );
 
-      const signatureBase64url = base64urlEncode(
-        String.fromCharCode.apply(null, new Uint8Array(signature))
-      );
-      const jwt = `${unsignedToken}.${signatureBase64url}`;
-      console.log("Result", jwt);
-      return jwt;
-    }
+    //   const signatureBase64url = base64urlEncode(
+    //     String.fromCharCode.apply(null, new Uint8Array(signature))
+    //   );
+    //   const jwt = `${unsignedToken}.${signatureBase64url}`;
+    //   console.log("Result", jwt);
+    //   return jwt;
+    // }
 
     // function updatedToken(receivedToken) {
     //   console.log("receivedToken", receivedToken);
