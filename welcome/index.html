@@ -4,14 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>welcome</title>
-  </head>
-  <body>
-    <p>redirecting...</p>
 
     <script>
-      const customScheme =
-        "com.etr407.ciam.androidharness://login.mansar.io/custom";
-      window.location.href = customScheme;
+      function redirect() {
+        // const packageName = "com.mobile.a407.selfserviceandroid";
+        const customScheme =
+          "com.etr407.ciam.androidharness://login.mansar.io/custom";
+      }
     </script>
+  </head>
+  <body>
+    <!-- <body onload="redirect()"> -->
+    <p>redirecting...</p>
   </body>
 </html>
