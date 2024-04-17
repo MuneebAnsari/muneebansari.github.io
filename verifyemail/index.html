@@ -68,7 +68,7 @@
 
       <p>
         Didn't get an email?
-        <a class="link" onclick="callback()">Resend</a>
+        <a class="link" onclick="loginCallback()">Resend</a>
       </p>
       <p>
         <button class="button-link" onclick="signupCallback()">
@@ -95,7 +95,8 @@
       const container = document.querySelector(".container");
       const continueButton = document.createElement("button");
       continueButton.textContent = "Continue";
-      continueButton.onclick = status === "true" ? callback : logoutCallback;
+      continueButton.onclick =
+        status === "true" ? loginCallback : logoutCallback;
       const messageElement = document.createElement("p");
       messageElement.textContent = message;
 
@@ -147,7 +148,7 @@
         "com.etr407.ciam.androidharness://login.mansar.io/custom/signup";
     }
 
-    function callback() {
+    function loginCallback() {
       window.location.href =
         "com.etr407.ciam.androidharness://login.mansar.io/custom/login";
     }
