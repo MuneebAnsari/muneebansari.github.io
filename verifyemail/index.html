@@ -71,7 +71,7 @@
         <a class="link" onclick="callback()">Resend</a>
       </p>
       <p>
-        <button class="button-link" onclick="logoutCallback()">
+        <button class="button-link" onclick="signupCallback()">
           Sign up with a different email
         </button>
       </p>
@@ -140,6 +140,11 @@
     function logoutCallback() {
       window.location.href =
         "com.etr407.ciam.androidharness://login.mansar.io/custom/logout";
+    }
+
+    function signupCallback() {
+      window.location.href =
+        "com.etr407.ciam.androidharness://login.mansar.io/custom/signup";
     }
 
     function callback() {
