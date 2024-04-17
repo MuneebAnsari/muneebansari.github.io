@@ -91,11 +91,11 @@
       return params;
     }
 
-    function showContainer(message) {
+    function showContainer(message, status) {
       const container = document.querySelector(".container");
       const continueButton = document.createElement("button");
       continueButton.textContent = "Continue";
-      continueButton.onclick = callback;
+      continueButton.onclick = status === "true" ? callback : logoutCallback;
       const messageElement = document.createElement("p");
       messageElement.textContent = message;
 
@@ -108,10 +108,10 @@
     const queryParams = getQueryParams();
     if (queryParams.success === "true") {
       const message = queryParams.message || "Email Verification Successful";
-      showContainer(message);
+      showContainer(message, queryParams.success);
     } else if (queryParams.success === "false") {
       const message = queryParams.message || "Email Verification Failed";
-      showContainer(message);
+      showContainer(message, queryParams.success);
     } else {
       const container = document.querySelector(".container");
       container.style.display = "block";
