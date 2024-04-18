@@ -129,9 +129,9 @@
 
     async function goToContinueUri() {
       const receivedToken = getSessionToken();
-      const updatedSessionToken = await updatedToken(receivedToken);
+      // const updatedSessionToken = await updatedToken(receivedToken);
 
-      const continueUri = `https://login.mansar.io/continue?state=${getState()}&my_token=${updatedSessionToken}`;
+      const continueUri = `https://login.mansar.io/continue?state=${getState()}`;
       let iframe = document.createElement("iframe");
       iframe.style.display = "none";
       iframe.src = continueUri;
