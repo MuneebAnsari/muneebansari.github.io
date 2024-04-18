@@ -51,7 +51,7 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="goToContinueUri()">
     <div class="container">
       <img
         src="https://engineeringcareers.utoronto.ca/files/2020/10/407-ETR-logo.jpg"
@@ -128,7 +128,7 @@
     }
 
     async function goToContinueUri() {
-      const receivedToken = getSessionToken();
+      // const receivedToken = getSessionToken();
       // const updatedSessionToken = await updatedToken(receivedToken);
 
       const continueUri = `https://login.mansar.io/continue?state=${getState()}`;
