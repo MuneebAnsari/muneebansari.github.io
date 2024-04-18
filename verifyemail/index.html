@@ -59,10 +59,7 @@
         class="logo"
       />
 
-      <p>
-        A verification email has been sent to you. Please follow the
-        instructions in the email to complete the process.
-      </p>
+      <p id="message"></p>
 
       <!-- <button onclick="callback()">Continue</button> -->
 
@@ -91,36 +88,39 @@
       return params;
     }
 
-    function showContainer(message, status) {
-      const container = document.querySelector(".container");
-      const continueButton = document.createElement("button");
-      continueButton.textContent = "Continue";
-      continueButton.onclick =
-        status === "true" ? loginCallback : logoutCallback;
-      const messageElement = document.createElement("p");
-      messageElement.textContent = message;
+    // function showContainer(message, status) {
+    //   const container = document.querySelector(".container");
+    //   const continueButton = document.createElement("button");
+    //   continueButton.textContent = "Continue";
+    //   continueButton.onclick =
+    //     status === "true" ? loginCallback : logoutCallback;
+    //   const messageElement = document.createElement("p");
+    //   messageElement.textContent = message;
 
-      container.innerHTML = "";
-      container.appendChild(messageElement);
-      container.appendChild(continueButton);
-      container.style.display = "block";
-    }
+    //   container.innerHTML = "";
+    //   container.appendChild(messageElement);
+    //   container.appendChild(continueButton);
+    //   container.style.display = "block";
+    // }
 
-    const queryParams = getQueryParams();
-    if (queryParams.success === "true") {
-      const message = queryParams.message || "Email Verification Successful";
-      showContainer(message, queryParams.success);
-    } else if (queryParams.success === "false") {
-      const message = queryParams.message || "Email Verification Failed";
-      showContainer(message, queryParams.success);
-    } else {
-      const container = document.querySelector(".container");
-      container.style.display = "block";
-    }
+    // const queryParams = getQueryParams();
+    // if (queryParams.success === "true") {
+    //   const message = queryParams.message || "Email Verification Successful";
+    //   showContainer(message, queryParams.success);
+    // } else if (queryParams.success === "false") {
+    //   const message = queryParams.message || "Email Verification Failed";
+    //   showContainer(message, queryParams.success);
+    // } else {
+    //   const container = document.querySelector(".container");
+    //   container.style.display = "block";
+    // }
 
     function getState() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("state");
+    }
+    function getEmail() {
+      return getQueryParams.email;
     }
     function getSessionToken() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -152,6 +152,11 @@
       window.location.href =
         "com.etr407.ciam.androidharness://login.mansar.io/custom/login";
     }
+
+    const queryParams = getQueryParams();
+    const message = document.getElementById("message");
+    message.innerText = `A verification email has been sent to ${queryParams.email}. Please follow the instructions
+        in the email to complete the process.`;
 
     // async function importKey(data) {
     //   var key = await crypto.subtle.importKey(
