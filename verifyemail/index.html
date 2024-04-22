@@ -88,43 +88,20 @@
       return params;
     }
 
-    // function showContainer(message, status) {
-    //   const container = document.querySelector(".container");
-    //   const continueButton = document.createElement("button");
-    //   continueButton.textContent = "Continue";
-    //   continueButton.onclick =
-    //     status === "true" ? loginCallback : logoutCallback;
-    //   const messageElement = document.createElement("p");
-    //   messageElement.textContent = message;
-
-    //   container.innerHTML = "";
-    //   container.appendChild(messageElement);
-    //   container.appendChild(continueButton);
-    //   container.style.display = "block";
-    // }
-
-    // const queryParams = getQueryParams();
-    // if (queryParams.success === "true") {
-    //   const message = queryParams.message || "Email Verification Successful";
-    //   showContainer(message, queryParams.success);
-    // } else if (queryParams.success === "false") {
-    //   const message = queryParams.message || "Email Verification Failed";
-    //   showContainer(message, queryParams.success);
-    // } else {
-    //   const container = document.querySelector(".container");
-    //   container.style.display = "block";
-    // }
-
     function getState() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("state");
     }
-    function getEmail() {
-      return getQueryParams.email;
-    }
+
     function getSessionToken() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("session_token");
+    }
+
+    function getEmailFromJwt(jwt) {
+      const payload = decodeJwt(jwt);
+      console.log(payload);
+      return payload.email;
     }
 
     async function goToContinueUri() {
@@ -155,7 +132,9 @@
 
     const queryParams = getQueryParams();
     const message = document.getElementById("message");
-    message.innerText = `A verification email has been sent to ${queryParams.email}. Please follow the instructions
+    const sessionToken = getSessionToken();
+    const email = getEmailFromJwt(sessionToken);
+    message.innerText = `A verification email has been sent to ${email}. Please follow the instructions
         in the email to complete the process.`;
 
     // async function importKey(data) {
@@ -172,10 +151,11 @@
     //   return key;
     // }
 
-    // function decodeJwt(token) {
-    //   const payload = token.split(".")[1];
-    //   return JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
-    // }
+    function decodeJwt(token) {
+      const payload = token.split(".")[1];
+      return JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
+    }
+
     // async function updatedToken(receivedToken) {
     //   function base64urlEncode(str) {
     //     return btoa(str)
