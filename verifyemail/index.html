@@ -93,6 +93,11 @@
       return urlParams.get("state");
     }
 
+    function getClientId() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("client_id");
+    }
+
     function getSessionToken() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("session_token");
@@ -115,41 +120,32 @@
       document.body.appendChild(iframe);
     }
 
-    function logoutCallback() {
-      window.location.href =
-        "com.etr407.ciam.androidharness://login.mansar.io/custom/logout";
-    }
-
     function signupCallback() {
-      window.location.href =
-        "com.etr407.ciam.androidharness://login.mansar.io/custom/signup";
+      const clientId = getClientId();
+      if (clientId === "pLK2iHJcGqsVi01iY1lMUHrYD3jHTse") {
+        window.location.href =
+          "com.etr407.ciam.androidharness://login.mansar.io/custom/signup";
+      } else {
+        alert("BAD CLIENT ID");
+      }
     }
 
     function loginCallback() {
-      window.location.href =
-        "com.etr407.ciam.androidharness://login.mansar.io/custom/login";
+      const clientId = getClientId();
+      if (clientId === "pLK2iHJcGqsVi01iY1lMUHrYD3jHTse") {
+        window.location.href =
+          "com.etr407.ciam.androidharness://login.mansar.io/custom/login";
+      } else {
+        alert("BAD CLIENT ID");
+      }
     }
 
     const queryParams = getQueryParams();
     const message = document.getElementById("message");
     const sessionToken = getSessionToken();
-    const email = getEmailFromJwt(sessionToken);
-    message.innerText = `A verification email has been sent to ${email}. Please follow the instructions
+    // const email = getEmailFromJwt(sessionToken);
+    message.innerText = `A verification email has been sent to ${queryParams.email}. Please follow the instructions
         in the email to complete the process.`;
-
-    // async function importKey(data) {
-    //   var key = await crypto.subtle.importKey(
-    //     "raw",
-    //     new TextEncoder().encode(data),
-    //     {
-    //       name: "HMAC",
-    //       hash: { name: "SHA-512" },
-    //     },
-    //     false,
-    //     ["sign", "verify"]
-    //   );
-    //   return key;
-    // }
 
     function decodeJwt(token) {
       const payload = token.split(".")[1];
